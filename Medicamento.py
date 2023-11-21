@@ -1,5 +1,6 @@
 import time
 
+
 class Medicamento:
 
     def __init__(self, nome, tipo, dias, tempo):
@@ -30,8 +31,3 @@ class Medicamento:
                 self.dias -= 1
                 temp2 = 0
                 print("dias faltando = ", self.dias)
-
-
-
-
-
