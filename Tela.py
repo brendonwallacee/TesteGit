@@ -29,35 +29,49 @@ tftempo.grid(column=0, row=8)
 
 
 def registro():
-    nome = tfnome.get()
-    tipo = tftipo.get()
-    dias = tfdias.get()
-    tempo = tftempo.get()
+    nome = str(tfnome.get())
+    tipo = str(tftipo.get())
+    dias = int(tfdias.get())
+    tempo = int(tftempo.get())
     remedio = Medicamento(nome, tipo, dias, tempo)
+
+
+def entrada():
     janela1 = Tk()
     janela1.title("Dados do remédio")
     janela1.geometry('550x50')
-    lremedio1 = Label(janela1, text=remedio)
+
+    nome = str(tfnome.get())
+    tipo = str(tftipo.get())
+    dias = int(tfdias.get())
+    tempo = int(tftempo.get())
+    remedio = Medicamento(nome, tipo, dias, tempo)
+
+    lremedio1 = Label(janela1, text=str(remedio))
     lremedio1.pack(side=LEFT, padx=20)
     voltar1 = Button(janela1, text="Voltar", command=janela1.destroy)
     voltar1.pack(side=RIGHT, padx=20)
 
 
-def btalarmar():
-    nome = tfnome.get()
-    tipo = tftipo.get()
-    dias = tfdias.get()
-    dias = int(dias)
-    tempo = tftempo.get()
-    tempo = int(tempo)
+def alarme():
+    nome = str(tfnome.get())
+    tipo = str(tftipo.get())
+    dias = int(tfdias.get())
+    tempo = int(tftempo.get())
     remedio = Medicamento(nome, tipo, dias, tempo)
     remedio.alarmar()
 
 
-registra = Button(frm2, text="Mostrar entrada", command=registro, width=20, height=2, borderwidth=2)
-registra.grid(column=0, row=1, padx=10, pady=5)
-alarma = Button(frm2, text="Registrar Alarme", command=btalarmar, width=20, height=2)
-alarma.grid(column=0, row=2, padx=10, pady=5)
+btreg = Button(frm2, text="Salvar", command=registro, width=20, height=2, borderwidth=2)
+btreg.grid(column=0, row=1, padx=10, pady=5)
+
+btalarm = Button(frm2, text="Registrar Alarme", command=alarme, width=20, height=2)
+btalarm.grid(column=0, row=2, padx=10, pady=5)
+
 saia = Button(frm2, text="Sair", command=janela.destroy, width=20, height=2)
 saia.grid(column=0, row=3, padx=10, pady=5)
+
+mostra = Button(frm2, text="Mostrar Entrada", command=entrada, width=20, height=2, borderwidth=2)
+mostra.grid(column=0, row=4, padx=10, pady=5)
+
 janela.mainloop()
