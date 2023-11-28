@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
-from Medicamento import Medicamento
+from persistencia.MedicamentoDAO import *
+from tkinter import messagebox
+
 
 janela = Tk()
 janela.title("Testando entrada no Python")
@@ -33,7 +35,11 @@ def registro():
     tipo = str(tftipo.get())
     dias = int(tfdias.get())
     tempo = int(tftempo.get())
-    remedio = Medicamento(nome, tipo, dias, tempo)
+    remedio = MedicamentoBean(nome, tipo, dias, tempo)
+    MedicamentoDAO.salvar(remedio)
+
+
+
 
 
 def entrada():
@@ -45,7 +51,7 @@ def entrada():
     tipo = str(tftipo.get())
     dias = int(tfdias.get())
     tempo = int(tftempo.get())
-    remedio = Medicamento(nome, tipo, dias, tempo)
+    remedio = MedicamentoBean(nome, tipo, dias, tempo)
 
     lremedio1 = Label(janela1, text=str(remedio))
     lremedio1.pack(side=LEFT, padx=20)
@@ -58,7 +64,7 @@ def alarme():
     tipo = str(tftipo.get())
     dias = int(tfdias.get())
     tempo = int(tftempo.get())
-    remedio = Medicamento(nome, tipo, dias, tempo)
+    remedio = MedicamentoBean(nome, tipo, dias, tempo)
     remedio.alarmar()
 
 
